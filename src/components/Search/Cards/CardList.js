@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Card, Message } from 'semantic-ui-react';
 import SingleCard from './SingleCard';

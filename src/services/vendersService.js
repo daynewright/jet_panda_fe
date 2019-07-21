@@ -40,7 +40,7 @@ export const fetchVarageSale = ({ search }) => {
   )
 };
 
-export const fetchFacebook = ({ search }) => {
+export const fetchFacebook = search => {
   fetch(`${API_ROOT_URL}/facebook?search=${search}`)
   .then(res => res.json())
   .then(
@@ -53,16 +53,4 @@ export const fetchFacebook = ({ search }) => {
   )
 };
 
-export const fetchAll = ({ search }) => {
-  fetch(`${API_ROOT_URL}/all?search=${search}`)
-  .then(res => res.json())
-  .then(
-    (result) => {
-      console.log(result);
-      return result;
-    },
-    (error) => {
-      return error;
-    }
-  )
-};
+export const fetchAll = search => fetch(`${API_ROOT_URL}/all?search=${search}`).then(res => res.json());

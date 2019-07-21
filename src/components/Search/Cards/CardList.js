@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Card, Dimmer, Loader } from 'semantic-ui-react';
+import { Card, Message } from 'semantic-ui-react';
 import SingleCard from './SingleCard';
-import { fetchAll } from '../../../services/vendersService';
-import { API_ROOT_URL } from '../../../utils/constants';
 
 const Wrapper = styled.div`
   margin-top: 25px;
@@ -14,35 +12,29 @@ const CardGroupWrapper = styled(Card.Group)`
   justify-content: space-between;
 `;
 
-const CardList = props => {
-  const [items, setItems ] = useState([]);
+const StyledMessage = styled(Message)`
+  text-align: center;
+`;
 
-  useEffect(() => {
-
-    fetch(`${API_ROOT_URL}/all?search=2ds`)
-    .then(res => res.json())
-    .then(
-      (result) => {
-        const { FACEBOOK, EBAY, VARAGESALE, OFFERUP } = result;
-        setItems([...FACEBOOK, ...EBAY, ...VARAGESALE, ...OFFERUP].sort((a,b) => a.price - b.price));
-      },
-      (error) => {
-        return error;
-      }
-    )
-  }, []);
+const CardList = ({ items }) => {
+  const { data, error } = items;
 
   return (
     <Wrapper>
       <CardGroupWrapper>
-        {items.length === 0 ?
-          <Dimmer active inverted>
-            <Loader inverted content='Loading' />
-          </Dimmer>
-        :
-          items.map(c => <SingleCard KEY={c.image} card={c} />)
-        }
+        {(data.length > 0) && data.map(c => <SingleCard key={c.image} card={c} />)}
       </CardGroupWrapper>
+      {error ?
+        <StyledMessage error>
+          <Message.Header><span role="img" aria-label="jet-panda">🤔</span> Something went wrong with your search.</Message.Header>
+          <p>Sorry! I wasn't able to find anything with your search.  Sometimes things don't work... Want to try again?</p>
+        </StyledMessage>
+      :
+        <StyledMessage info>
+          <Message.Header><span role="img" aria-label="jet-panda">👆</span> Search for something above <span role="img" aria-label="jet-panda">👆</span></Message.Header>
+          <p>Use Jet Panda to search Facebook Marketplace, Ebay, VarageSale, OfferUp and more in one simple search!</p>
+        </StyledMessage>
+      }
     </Wrapper>
   );
 };

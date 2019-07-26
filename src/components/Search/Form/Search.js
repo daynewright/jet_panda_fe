@@ -18,9 +18,7 @@ const Search = ({ setItems, setLoading, loading }) => {
       setLoading(true);
       fetchAll(target.value)
         .then(results => {
-          const { FACEBOOK, EBAY, VARAGESALE, OFFERUP } = results;
-
-          setItems({error: false, data: [...FACEBOOK, ...EBAY, ...VARAGESALE, ...OFFERUP].sort((a,b) => a.price - b.price) });
+          setItems({error: false, data: results.sort((a,b) => a.price - b.price) });
           setLoading(false);
         })
         .catch(err => {

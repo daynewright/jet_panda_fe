@@ -22,7 +22,7 @@ const CardList = ({ items }) => {
   return (
     <Wrapper>
       <CardGroupWrapper>
-        {(data.length > 0) && data.map(c => <SingleCard key={c.image} card={c} />)}
+        {(data.length > 0) && data.map((c, i) => <SingleCard key={i} card={c} />)}
       </CardGroupWrapper>
       {error ?
         <StyledMessage error>

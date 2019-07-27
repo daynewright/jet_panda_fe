@@ -65,7 +65,10 @@ const FilterModal = props => {
             <StyledCheckbox
               checked={filterValues.sortLowHigh}
               onClick={() =>
-                setFilterValues({ sortLowHigh: !filterValues.sortLowHigh })
+                setFilterValues({
+                  ...filterValues,
+                  sortLowHigh: !filterValues.sortLowHigh
+                })
               }
               label="Sort lowest price to highest"
             />
@@ -75,14 +78,20 @@ const FilterModal = props => {
             <StyledCheckbox
               checked={filterValues.showFacebook}
               onClick={() =>
-                setFilterValues({ showFacebook: !filterValues.showFacebook })
+                setFilterValues({
+                  ...filterValues,
+                  showFacebook: !filterValues.showFacebook
+                })
               }
               label="Show Facebook results"
             />
             <StyledCheckbox
               checked={filterValues.showOfferUp}
               onClick={() =>
-                setFilterValues({ showOfferUp: !filterValues.showOfferUp })
+                setFilterValues({
+                  ...filterValues,
+                  showOfferUp: !filterValues.showOfferUp
+                })
               }
               label="Show OfferUp results"
             />
@@ -90,6 +99,7 @@ const FilterModal = props => {
               checked={filterValues.showVarageSale}
               onClick={() =>
                 setFilterValues({
+                  ...filterValues,
                   showVarageSale: !filterValues.showVarageSale
                 })
               }
@@ -99,6 +109,7 @@ const FilterModal = props => {
               checked={filterValues.showEbay}
               onClick={() =>
                 setFilterValues({
+                  ...filterValues,
                   showEbay: !filterValues.showEbay
                 })
               }

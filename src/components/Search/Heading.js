@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledHeader = styled.h1`
   text-align: center;
@@ -12,7 +12,10 @@ const StyledHeader = styled.h1`
 const Heading = () => (
   <div>
     <StyledHeader>
-        JET PANDA <span role="img" aria-label="jet-panda">✈️ 🐼</span>
+      JET PANDA{" "}
+      <span role="img" aria-label="jet-panda">
+        ✈️ 🐼
+      </span>
     </StyledHeader>
   </div>
 );

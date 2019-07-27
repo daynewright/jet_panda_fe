@@ -1,6 +1,7 @@
 import React from 'react';
-import { Input } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react';
 import styled from 'styled-components';
+import FilterModal from './FilterModal';
 import { fetchAll } from '../../../services/vendersService';
 
 const SearchWrapper = styled.div`
@@ -39,7 +40,10 @@ const Search = ({ setItems, setLoading, loading }) => {
         onKeyPress={changeHandler}
         loading={loading}
         disabled={loading}
-      />      
+      />
+      <FilterModal
+        loading={loading}
+      />
     </SearchWrapper>
   );
 };
